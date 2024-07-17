@@ -1,8 +1,10 @@
 import cv2
 import mediapipe as mp
 import pyautogui
+import time
 
 x1 = y1 = x2 = y2 = 0
+volume_change_delay = 0.5  # Delay in seconds between volume changes
 
 webcam = cv2.VideoCapture(0)
 
@@ -47,8 +49,10 @@ while True:
 
         if dist > 50:
             pyautogui.press("volumeup")
+            time.sleep(volume_change_delay)  # Delay between volume changes
         else:
             pyautogui.press("volumedown")
+            time.sleep(volume_change_delay)  # Delay between volume changes
 
         cv2.line(image, (x1, y1), (x2, y2), (0, 255, 0), 5)
 
